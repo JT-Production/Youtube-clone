@@ -7,21 +7,12 @@ import { IoMdNotifications } from "react-icons/io";
 import { PiDotsNineBold } from "react-icons/pi";
 import Image from "next/image";
 import avatar from "../public/avatar.png"
-import { useState } from "react";
 import useStore from "./store";
 
-// export interface searchProps {
-//   searchQuery: string;
-  
-// }
-
-// export function getSearchQuery(searchQuery: string) {
-//   return searchQuery;
-// }
 
 const Navbar = () => {
   // const [searchQuery, setSearchQuery] = useState<searchProps>({ searchQuery: "", });
-  const { searchQuery, setSearchQuery } = useStore();
+  const {  setSearchQuery } = useStore();
  
 
   return (
@@ -46,7 +37,7 @@ const Navbar = () => {
           <div className="">
             <input type="text"
             
-            onChange={(e: any) => setSearchQuery(e.target.value) }
+            onChange={(e) => setSearchQuery(e.target.value) }
              placeholder="Search..." className="bg-gray-100 px-5 p-3 rounded-lg w-100 text-gray-500 text-sm outline-0"/>
           </div>
 

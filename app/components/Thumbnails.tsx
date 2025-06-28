@@ -1,8 +1,9 @@
 "use client";
-import { use, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { getYoutubeVideos } from "../home/index";
 
 import useStore from "./store";
+import Image from "next/image";
 
 
 type YoutubeResponse = {
@@ -67,7 +68,7 @@ export default function Thumbnails( ) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [hovered, setHovered] = useState("");
-  const { searchQuery, setSearchQuery } = useStore();
+  const { searchQuery } = useStore();
  
   function getRelativeTime(dateString: string) {
     const now = new Date();
@@ -151,7 +152,9 @@ export default function Thumbnails( ) {
                   // allow="autoplay; encrypted-media"
                 ></iframe>
               ) : (
-                <img
+                <Image
+                width ={1000}
+                height={1000}
                   src={video.snippet.thumbnails.high.url}
                   alt="thumbnail"
                   className="h-50 w-100 object-cover rounded-2xl mr-auto"
@@ -160,7 +163,9 @@ export default function Thumbnails( ) {
             </div>
   
             <div className="flex flex-col px-2">
-              <img
+              <Image
+              width ={1000}
+              height={1000}
                 src={video.snippet.thumbnails.high.url}
                 alt="avatar"
                 className="h-10 w-10 rounded-full -translate-y-3"
@@ -174,7 +179,8 @@ export default function Thumbnails( ) {
                 {video.snippet.channelTitle}
               </p>
             <div className="flex gap-1">
-              {/* <p className="text-black/30">{formatNumber(video.statistics.viewCount)} views</p> */}
+             
+           <p className="text-black/30">{formatNumber(video.statistics.viewCount)} views</p>
               <p className="text-black/30">•</p>
             <p className="text-black/30">
                 {getRelativeTime(video.snippet.publishedAt)}
@@ -208,7 +214,9 @@ export default function Thumbnails( ) {
                   // allow="autoplay; encrypted-media"
                 ></iframe>
               ) : (
-                <img
+                <Image
+                width ={1000}
+                height={1000}
                   src={video.snippet.thumbnails.high.url}
                   alt="thumbnail"
                   className="h-50 w-100 object-cover rounded-2xl mr-auto"
@@ -217,7 +225,9 @@ export default function Thumbnails( ) {
             </div>
   
             <div className="flex flex-col px-2">
-              <img
+              <Image
+              width ={1000}
+              height={1000}
                 src={video.snippet.thumbnails.high.url}
                 alt="avatar"
                 className="h-10 w-10 rounded-full -translate-y-3"
@@ -231,7 +241,7 @@ export default function Thumbnails( ) {
                 {video.snippet.channelTitle}
               </p>
             <div className="flex gap-1">
-              {/* <p className="text-black/30">{formatNumber(video.statistics.viewCount)} views</p> */}
+              <p className="text-black/30">{formatNumber(video.statistics.viewCount)} views</p>
               <p className="text-black/30">•</p>
             <p className="text-black/30">
                 {getRelativeTime(video.snippet.publishedAt)}
